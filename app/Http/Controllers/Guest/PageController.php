@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Train;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -14,7 +15,8 @@ class PageController extends Controller
     }
 
     public function filtered() {
-        $trains = Train::all()->where('data_partenza', '1998-11-09');
+        $currentDate = Carbon::now()->toDateString();
+        $trains = Train::all()->where('data_partenza', $currentDate);
         return view('layouts.app', compact('trains'));
     }
     

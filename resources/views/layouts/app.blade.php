@@ -21,14 +21,14 @@
         <div class="container">
             @if(Route::currentRouteName() == 'home')
                 <div class="my-5">
-                    <a href="{{route('filtered')}}" class="p-3 rounded-3 filter">Filtra per data di partenza</a>
+                    <a href="{{route('filtered')}}" class="p-3 rounded-3 filter">Filtra per data di partenza odierna</a>
                 </div>
             @else
                 <div class="my-5">
                     <a href="/" class="p-3 rounded-3 filter">Mostra tutti i treni</a>
                 </div>
             @endif
-            <table class="d-flex justify-content-center">
+            <table class="d-flex justify-content-center mb-5">
                 <tr>
                     <th>Azienda</th>
                     <th>Stazione di Partenza</th>
@@ -50,8 +50,16 @@
                     <td>{{$train->orario_arrivo}}</td>
                     <td>{{$train->codice_treno}}</td>
                     <td>{{$train->numero_carrozze}}</td>
-                    <td>{{$train->in_orario}}</td>
-                    <td>{{$train->cancellato}}</td>
+                    @if($train->in_orario == true && $train->cancellato == false)
+                        <td>Il treno è in orario</td>
+                    @else 
+                        <td>Il treno non è in orario</td>
+                    @endif
+                    @if($train->cancellato == true)
+                        <td>Il treno è stato cancellato</td>
+                    @else
+                        <td>Il treno è presente</td>
+                    @endif
                     <td>{{$train->data_partenza}}</td>
                 </tr>
             @endforeach
