@@ -23,6 +23,7 @@ class TravelTrainsSeeder extends Seeder
             $newtrains->stazione_arrivo = $faker->city();
             $newtrains->orario_partenza = $faker->time();
             $newtrains->orario_arrivo = $faker->time();
+            $newtrains->data_partenza = $faker->date();
             $newtrains->codice_treno = $faker->bothify();
             $newtrains->numero_carrozze = $faker->randomDigit();
             $newtrains->in_orario = $faker->boolean();

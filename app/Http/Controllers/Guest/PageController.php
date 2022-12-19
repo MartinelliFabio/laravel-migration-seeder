@@ -12,4 +12,10 @@ class PageController extends Controller
         $trains = Train::all();
         return view('layouts.app', compact('trains'));
     }
+
+    public function filtered() {
+        $trains = Train::all()->where('data_partenza', '1998-11-09');
+        return view('layouts.app', compact('trains'));
+    }
+    
 }
