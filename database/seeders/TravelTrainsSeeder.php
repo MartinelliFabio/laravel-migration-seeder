@@ -18,7 +18,7 @@ class TravelTrainsSeeder extends Seeder
     public function run(Faker $faker) {
         for($i = 0; $i < 10; $i++) {
             $newtrains = new Train();
-            $newtrains->azienda = $faker->name();
+            $newtrains->azienda = $faker->company();
             $newtrains->stazione_partenza = $faker->city();
             $newtrains->stazione_arrivo = $faker->city();
             $newtrains->orario_partenza = $faker->time();
