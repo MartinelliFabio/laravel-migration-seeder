@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
 use Faker\Generator as Faker;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,11 +22,7 @@ class TravelTrainsSeeder extends Seeder
             $newtrains->stazione_arrivo = $faker->city();
             $newtrains->orario_partenza = $faker->time();
             $newtrains->orario_arrivo = $faker->time();
-            if($i%3 == 0) {
-                $newtrains->data_partenza = $faker->date();
-            } else {
-                $newtrains->data_partenza = Carbon::now()->toDateString();
-            }
+            $newtrains->data_partenza = $faker->dateTimeBetween('now', '+1 week');
             $newtrains->codice_treno = $faker->bothify();
             $newtrains->numero_carrozze = $faker->randomDigitNot(0);
             $newtrains->in_orario = $faker->boolean();
