@@ -14,7 +14,7 @@ class PageController extends Controller
     }
 
     public function filtered() {
-        $trains = Train::all()->where('data_partenza', today()->toDateString());
+        $trains = Train::where('data_partenza', today()->toDateString())->orderBy('data_partenza')->get();
         return view('layouts.app', compact('trains'));
     }
     
